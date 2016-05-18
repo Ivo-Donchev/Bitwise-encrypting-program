@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1447425025 source:e:\programs 2015-16\ready c\cryptos_2.0_bitwise\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+
