@@ -1,22 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <windows.h>
 #define BUFFER_SIZE 4096
 int getBit(int, int);
-void swapBits(char*, int, int);
+void swapBits(int*, int, int);
 void changeBitToNull(int*, int);
 void changeBitToOne(int*, int);
 char decryptChar(char);
 void reverseString(char*);
 void swap(char*, char*);
 void kill(const char*);
-void getline(char*);
+void getLine(char*);
 void printDecrypted(char *);
 void crypt(char*);
 int main(int argc, char** argv)
 {
-    system("cls");
     char srcFileName[20];
     char destFileName[20];
     if(argc == 3)
@@ -50,12 +48,11 @@ int main(int argc, char** argv)
         fwrite(buffer, 1, readBytes, dest);
     }
     printf("SUCCESS!!!\n\n\n");
-    system("pause");
     return 0;
 }
 
 
-void swapBits(char *number, int fpos, int spos)
+void swapBits(int *number, int fpos, int spos)
 {
     int fbit = getBit(*number, fpos),
         sbit = getBit(*number, spos);
@@ -118,7 +115,7 @@ void printDecrypted(char *message)
     }
     printf("\n");
 }
-void getline(char* text)
+void getLine(char* text)
 {
     int i = -1;
     do{
@@ -130,7 +127,7 @@ void getline(char* text)
 }
 void kill(const char* msg)
 {
-    fprintf(stderr,msg);
+    printf("%s", msg);
 }
 void reverseString(char* text)
 {
@@ -151,7 +148,7 @@ char decryptChar(char ch)
     int i;
     for(i = 0; i < 7; i+=2)
     {
-        swapBits(&ch,i,i+1);
+        swapBits((int*)&ch,i,i+1);
     }
     return ch;
 }
